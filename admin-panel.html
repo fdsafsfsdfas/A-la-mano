@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Panel admin | A la Mano</title>
+  <link rel="stylesheet" href="css/styles.css" />
+  <style>
+    body {
+      background: #f5f7ff;
+    }
+
+    .admin-shell {
+      max-width: 1280px;
+      margin: 2rem auto;
+      padding: 0 1rem 3rem;
+    }
+
+    .panel {
+      background: white;
+      border: 1px solid #e5e7eb;
+      border-radius: 18px;
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+      box-shadow: 0 8px 22px rgba(0,0,0,.04);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 1rem;
+    }
+
+    th, td {
+      border-bottom: 1px solid #e5e7eb;
+      padding: 0.9rem 0.7rem;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    th {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      color: #6b7280;
+      letter-spacing: 0.08em;
+    }
+
+    .btn {
+      border: none;
+      border-radius: 10px;
+      padding: 0.55rem 0.8rem;
+      cursor: pointer;
+      font-weight: 700;
+    }
+
+    .btn-success {
+      background: #ecfdf5;
+      color: #166534;
+    }
+
+    .btn-danger {
+      background: #fef2f2;
+      color: #991b1b;
+    }
+
+    .status-pill {
+      display: inline-block;
+      padding: 0.35rem 0.65rem;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      background: #f3f4f6;
+      color: #374151;
+    }
+
+    .status-pill.active {
+      background: #ecfdf5;
+      color: #166534;
+    }
+
+    .status-pill.pending {
+      background: #fff7ed;
+      color: #9a5b00;
+    }
+
+    .status-pill.rejected {
+      background: #fef2f2;
+      color: #991b1b;
+    }
+
+    .logout {
+      background: #111827;
+      color: white;
+      padding: 0.7rem 1rem;
+      border-radius: 10px;
+      font-weight: 700;
+      display: inline-block;
+      text-decoration: none;
+      margin-bottom: 1rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="admin-shell">
+    <a class="logout" href="#" id="logoutBtn">Cerrar sesión</a>
+
+    <div class="panel">
+      <h1>Panel de administración</h1>
+      <p>Gestión de proveedores, créditos y mercado.</p>
+    </div>
+
+    <div class="panel">
+      <h2>Compras de créditos</h2>
+      <div id="creditPurchasesTable"></div>
+    </div>
+
+    <div class="panel">
+      <h2>Productos activos del Mercado</h2>
+      <div id="activeMarketProductsTable"></div>
+    </div>
+
+    <div class="panel">
+      <h2>Todos los productos del Mercado</h2>
+      <div id="marketProductsTable"></div>
+    </div>
+
+    <div class="panel">
+      <h2>Proveedores</h2>
+      <div id="providersTable"></div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="js/config.js"></script>
+  <script src="js/admin.js"></script>
+</body>
+</html>

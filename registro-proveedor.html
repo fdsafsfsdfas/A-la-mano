@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Registrar proveedor | A la Mano</title>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <nav class="navbar">
+    <div class="container navbar-inner">
+      <h1 class="logo">A la Mano</h1>
+
+      <ul class="nav-links">
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="buscar.html">Buscar servicio</a></li>
+        <li><a href="login-proveedor.html">Login</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main class="container">
+    <div class="auth-shell">
+      <h2>Registrar proveedor</h2>
+      <p class="subtitle">Crea tu cuenta para publicar tus servicios en La Habana.</p>
+
+      <div id="mensaje" class="alert"></div>
+
+      <form id="registroProveedorForm">
+        <div class="form-grid">
+          <div class="field">
+            <label for="email">Correo electrónico</label>
+            <input type="email" id="email" required placeholder="tuemail@ejemplo.com" />
+          </div>
+
+          <div class="field">
+            <label for="password">Contraseña</label>
+            <input type="password" id="password" required minlength="6" placeholder="Mínimo 6 caracteres" />
+          </div>
+
+          <div class="field">
+            <label for="name">Nombre completo</label>
+            <input type="text" id="name" required placeholder="Ej: José García" />
+          </div>
+
+          <div class="field">
+            <label for="business_name">Nombre del negocio</label>
+            <input type="text" id="business_name" placeholder="Ej: Electricista José" />
+          </div>
+
+          <div class="field">
+            <label for="phone">Teléfono</label>
+            <input type="tel" id="phone" required placeholder="Ej: 5351234567" />
+          </div>
+
+          <div class="field">
+            <label for="whatsapp">WhatsApp</label>
+            <input type="tel" id="whatsapp" placeholder="Ej: 5351234567" />
+          </div>
+
+          <div class="field">
+            <label for="municipio">Municipio</label>
+            <select id="municipio" required>
+              <option value="">Selecciona municipio</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label for="categoria">Categoría</label>
+            <select id="categoria" required>
+              <option value="">Selecciona categoría</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label for="barrio">Barrio / zona</label>
+            <input type="text" id="barrio" placeholder="Ej: Marianao, Vedado, etc." />
+          </div>
+
+          <div class="field full">
+            <label for="description">Descripción del servicio</label>
+            <textarea id="description" required placeholder="Describe qué servicio ofreces, tu experiencia y disponibilidad."></textarea>
+          </div>
+
+          <div class="field full">
+            <label for="schedule">Horario de trabajo</label>
+            <input type="text" id="schedule" placeholder="Ej: Lunes a sábado, de 8:00 a.m. a 5:00 p.m." />
+          </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Crear cuenta</button>
+      </form>
+
+      <a class="muted-link" href="login-proveedor.html">Ya tengo cuenta. Iniciar sesión</a>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container">© 2026 A la Mano · Servicios en La Habana</div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="js/config.js"></script>
+  <script src="js/auth.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", async () => {
+      await cargarMunicipiosYCategorias();
+    });
+  </script>
+</body>
+</html>

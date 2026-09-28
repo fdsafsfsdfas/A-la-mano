@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Buscar servicios | A la Mano</title>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <nav class="navbar">
+    <div class="container navbar-inner">
+      <h1 class="logo">A la Mano</h1>
+
+      <ul class="nav-links">
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="buscar.html">Buscar servicio</a></li>
+        <li><a href="registro-proveedor.html">Brindar servicio</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main class="container section">
+    <div class="search-box">
+      <h2>Buscar servicio</h2>
+
+      <div class="filters">
+        <div class="field">
+          <label for="municipio">Municipio</label>
+          <select id="municipio">
+            <option value="">Selecciona un municipio</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label for="categoria">Categoría</label>
+          <select id="categoria">
+            <option value="">Selecciona una categoría</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label>&nbsp;</label>
+          <button type="button" class="btn btn-primary" id="buscarBtn">🔍 Buscar</button>
+        </div>
+      </div>
+    </div>
+
+    <div id="resultados" class="results"></div>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      © 2026 A la Mano · Servicios en La Habana
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="js/config.js"></script>
+  <script src="js/analytics.js"></script>
+  <script src="js/buscar.js"></script>
+</body>
+</html>

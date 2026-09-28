@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Buscar productos | Mercado informal | A la Mano</title>
+
+  <link rel="stylesheet" href="css/styles.css" />
+
+  <style>
+    .market-search-form {
+      display: flex;
+      align-items: end;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .market-search-form .field {
+      flex: 1 1 280px;
+      margin-bottom: 0;
+    }
+
+    .market-search-form .btn {
+      flex: 0 0 auto;
+    }
+
+    .market-card {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .market-card-image {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      display: block;
+      border-radius: 12px;
+      margin-bottom: 1rem;
+      background: #f3f4f6;
+    }
+
+    .market-card-image.placeholder {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3rem;
+    }
+
+    .market-card-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 0.8rem;
+    }
+
+    .market-badge {
+      display: inline-block;
+      padding: 0.35rem 0.65rem;
+      border-radius: 999px;
+      font-size: 0.78rem;
+      font-weight: 700;
+    }
+
+    .market-badge.featured {
+      background: #ede9fe;
+      color: #6d28d9;
+    }
+
+    .market-badge.promoted {
+      background: #fff7ed;
+      color: #c2410c;
+    }
+
+    .market-price {
+      color: #166534;
+      font-size: 1.15rem;
+      font-weight: 800;
+      margin: 0.6rem 0;
+    }
+
+    .market-location {
+      color: #6b7280;
+      font-size: 0.9rem;
+      margin-top: 0.35rem;
+    }
+
+    .card-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      margin-top: 1rem;
+    }
+
+    .small-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border: none;
+      border-radius: 9px;
+      padding: 0.65rem 0.8rem;
+      text-decoration: none;
+      font-size: 0.86rem;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .small-btn.primary {
+      background: #eef2ff;
+      color: #3730a3;
+    }
+
+    .small-btn.green {
+      background: #ecfdf5;
+      color: #166534;
+    }
+
+    .small-btn.disabled {
+      opacity: 0.55;
+      pointer-events: auto;
+    }
+
+    .results {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+
+    .empty {
+      width: 100%;
+      padding: 1.5rem;
+      border: 1px solid #e5e7eb;
+      border-radius: 14px;
+      background: #ffffff;
+      color: #6b7280;
+      text-align: center;
+      box-sizing: border-box;
+      grid-column: 1 / -1;
+    }
+
+    @media (max-width: 640px) {
+      .market-search-form {
+        display: block;
+      }
+
+      .market-search-form .field {
+        margin-bottom: 1rem;
+      }
+
+      .market-search-form .btn {
+        width: 100%;
+      }
+
+      .card-actions {
+        flex-direction: column;
+      }
+
+      .small-btn {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav class="navbar">
+    <div class="container navbar-inner">
+      <h1 class="logo">A la Mano</h1>
+
+      <ul class="nav-links">
+        <li>
+          <a href="index.html">Inicio</a>
+        </li>
+
+        <li>
+          <a href="buscar.html">Buscar servicios</a>
+        </li>
+
+        <li>
+          <a href="mercado.html">Mercado</a>
+        </li>
+
+        <li>
+          <a href="mercado-publicar.html">
+            Publicar producto
+          </a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <main class="container section">
+    <div class="search-box">
+      <h2>Buscar productos</h2>
+
+      <p class="subtitle">
+        Encuentra productos publicados por proveedores de A la Mano.
+      </p>
+
+      <div class="market-search-form">
+        <div class="field">
+          <label for="productSearch">
+            ¿Qué estás buscando?
+          </label>
+
+          <input
+            id="productSearch"
+            type="search"
+            maxlength="100"
+            placeholder="Ej: teléfono, bicicleta, ropa..."
+            autocomplete="off"
+          />
+        </div>
+
+        <button
+          type="button"
+          class="btn btn-primary"
+          id="searchProductsBtn"
+        >
+          🔍 Buscar
+        </button>
+      </div>
+    </div>
+
+    <div
+      id="marketResults"
+      class="results"
+      aria-live="polite"
+    >
+      <div class="empty">
+        Cargando productos...
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      © 2026 A la Mano · Mercado informal
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="js/config.js"></script>
+  <script src="js/analytics.js"></script>
+  <script src="js/mercado-buscar.js"></script>
+</body>
+</html>

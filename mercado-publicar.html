@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Publicar producto | A la Mano</title>
+
+  <link rel="stylesheet" href="css/styles.css" />
+
+  <style>
+    .publication-notice {
+      margin: 1rem 0 1.5rem;
+      padding: 1rem 1.15rem;
+      border: 1px solid #bbf7d0;
+      border-radius: 14px;
+      background: #ecfdf5;
+      color: #166534;
+    }
+
+    .publication-notice strong {
+      display: block;
+      margin-bottom: 0.4rem;
+      font-size: 1.05rem;
+    }
+
+    .publication-notice p {
+      margin: 0;
+      color: #166534;
+      font-size: 0.94rem;
+      line-height: 1.55;
+    }
+
+    .credit-balance-box {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      margin: 1rem 0 1.5rem;
+      padding: 1rem 1.15rem;
+      border: 1px solid #c7d2fe;
+      border-radius: 14px;
+      background: #eef2ff;
+      color: #1e1b4b;
+    }
+
+    .credit-balance-label {
+      display: block;
+      color: #6366f1;
+      font-size: 0.8rem;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+
+    .credit-balance-box strong {
+      display: block;
+      margin-top: 0.25rem;
+      font-size: 1.5rem;
+    }
+
+    .credit-balance-box small {
+      color: #4338ca;
+      text-align: right;
+    }
+
+    .provider-note {
+      margin-bottom: 1rem;
+      padding: 0.8rem 1rem;
+      border-radius: 10px;
+      background: #f9fafb;
+      color: #4b5563;
+      font-size: 0.92rem;
+      line-height: 1.5;
+    }
+
+    .payment-instructions {
+      margin-bottom: 1.5rem;
+      padding: 1rem;
+      border: 1px solid var(--borde);
+      border-radius: 14px;
+      background: var(--fondo-2);
+      color: var(--texto-suave);
+    }
+
+    .payment-instructions p {
+      margin: 0.35rem 0;
+    }
+
+    .payment-instructions strong {
+      color: var(--cuba-azul);
+    }
+
+    .price-box {
+      padding: 1rem;
+      border-radius: 12px;
+      background: #f8fafc;
+      border: 1px solid var(--borde);
+      color: var(--cuba-azul);
+    }
+
+    @media (max-width: 600px) {
+      .credit-balance-box {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .credit-balance-box small {
+        text-align: left;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav class="navbar">
+    <div class="container navbar-inner">
+      <h1 class="logo">A la Mano</h1>
+
+      <ul class="nav-links">
+        <li>
+          <a href="index.html">Inicio</a>
+        </li>
+
+        <li>
+          <a href="buscar.html">Buscar servicios</a>
+        </li>
+
+        <li>
+          <a href="mercado.html">Mercado</a>
+        </li>
+
+        <li>
+          <a href="mi-cuenta.html">Mi cuenta</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <main class="container section">
+    <div class="auth-shell">
+      <h2>Publicar producto</h2>
+
+      <p class="subtitle">
+        Publica tu producto en el Mercado y empieza a recibir contactos.
+      </p>
+
+      <div class="publication-notice">
+        <strong>🎁 Tu primera publicación es gratis</strong>
+
+        <p>
+          Tu primer servicio o producto puede publicarse sin gastar créditos.
+          Después de utilizar esta oportunidad, cada nueva publicación tendrá
+          un costo de 50 créditos y permanecerá visible durante 3 días.
+        </p>
+      </div>
+
+      <div id="mensaje" class="alert"></div>
+
+      <div class="credit-balance-box">
+        <div>
+          <span class="credit-balance-label">
+            Saldo disponible
+          </span>
+
+          <strong>
+            <span id="availableCredits">Cargando...</span>
+            créditos
+          </strong>
+        </div>
+
+        <small id="publicationCostText">
+          Comprobando costo de publicación...
+        </small>
+      </div>
+
+      <div class="provider-note">
+        Los datos del vendedor pertenecen a tu cuenta de proveedor.
+        Puedes modificarlos antes de publicar.
+      </div>
+
+      <div class="payment-instructions">
+        <p>
+          <strong>Primera publicación:</strong>
+          Gratis
+        </p>
+
+        <p>
+          <strong>Publicaciones siguientes:</strong>
+          50 créditos
+        </p>
+
+        <p>
+          <strong>Duración:</strong>
+          3 días
+        </p>
+
+        <p>
+          La primera publicación no descuenta créditos. Después, el costo se
+          descontará únicamente cuando la publicación sea aprobada por el
+          sistema.
+        </p>
+      </div>
+
+      <form id="marketForm">
+        <div class="form-grid">
+          <div class="field">
+            <label for="sellerName">Tu nombre</label>
+
+            <input
+              id="sellerName"
+              type="text"
+              maxlength="120"
+              required
+            />
+          </div>
+
+          <div class="field">
+            <label for="sellerPhone">Teléfono</label>
+
+            <input
+              id="sellerPhone"
+              type="tel"
+              maxlength="40"
+              required
+            />
+          </div>
+
+          <div class="field">
+            <label for="sellerWhatsapp">WhatsApp</label>
+
+            <input
+              id="sellerWhatsapp"
+              type="tel"
+              maxlength="40"
+            />
+          </div>
+
+          <div class="field full">
+            <label for="title">Título del producto</label>
+
+            <input
+              id="title"
+              type="text"
+              maxlength="150"
+              required
+            />
+          </div>
+
+          <div class="field full">
+            <label for="description">Descripción</label>
+
+            <textarea
+              id="description"
+              maxlength="2000"
+              required
+            ></textarea>
+          </div>
+
+          <div class="field">
+            <label for="price">Precio en CUP</label>
+
+            <input
+              id="price"
+              type="number"
+              min="0.01"
+              step="0.01"
+              required
+            />
+          </div>
+
+          <div class="field">
+            <label for="durationDays">Duración</label>
+
+            <select id="durationDays" disabled>
+              <option value="3">3 días</option>
+            </select>
+          </div>
+
+          <div class="field full">
+            <label for="productImage">
+              Foto del producto
+            </label>
+
+            <input
+              id="productImage"
+              type="file"
+              accept="image/jpeg,image/png,image/webp"
+            />
+
+            <small>
+              Formatos permitidos: JPG, PNG o WEBP. Máximo 5 MB.
+            </small>
+          </div>
+
+          <div class="field full">
+            <div id="costPreview" class="price-box">
+              <strong>
+                Comprobando costo de publicación...
+              </strong>
+            </div>
+          </div>
+        </div>
+
+        <button
+          type="submit"
+          id="publishProductBtn"
+          class="btn btn-primary"
+        >
+          Publica ya ...
+        </button>
+      </form>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      © 2026 A la Mano · Mercado
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="js/config.js"></script>
+  <script src="js/mercado-publicar.js"></script>
+</body>
+</html>
